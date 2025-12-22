@@ -1,17 +1,19 @@
+# flake8: noqa
+
 import numpy as np
 import pandas as pd
 
 class Party:
     def __init__(self, party: str):
         self.party = party
-        self.data = pd.read_csv("voxmeter.csv")
+        self.data = pd.read_csv("../data/voxmeter.csv")
         self.party_data = self.data[self.data["party_letter"] == party]
         self.current_votes = self.data.get("votes").to_list()[-1]
 
 class Block:
     def __init__(self, parties: str):
         self.parties = parties
-        self.data = pd.read_csv("voxmeter.csv")
+        self.data = pd.read_csv("../data/voxmeter.csv")
         self.current_votes = 0.0
     
     def vote_history(self):
