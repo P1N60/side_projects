@@ -31,7 +31,8 @@ class Block:
         for party in self.parties:
             party_class = Party(party)
             party_vote_histories.append(party_class.party_data.get("votes").to_list()) # type: ignore
-        for j in range(len(party_class.party_data)): # type: ignore
+        min_length = min(len(h) for h in party_vote_histories)
+        for j in range(min_length):
             sum = 0
             for i in range(len(self.parties)):
                 sum += party_vote_histories[i][j]
